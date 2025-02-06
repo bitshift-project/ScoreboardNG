@@ -1,0 +1,11 @@
+<div>
+    <p>Wähle ein Projekt!</p>
+    <mat-form-field>
+        <mat-label>Projekte</mat-label>
+        <mat-select >
+          @for (project of projects; track project.projectId) {
+            <mat-option (onSelectionChange)="selectProject(project.projectId)">{{project.name}}</mat-option>
+          }
+        </mat-select>
+    </mat-form-field>
+</div>
