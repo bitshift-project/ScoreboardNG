@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { DataIntegrityService } from './services/dataIntegrity/data-integrity.service';
 
 @Component({

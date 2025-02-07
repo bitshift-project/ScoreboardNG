@@ -1,0 +1,29 @@
+<div>
+  <p>scoreboard-table works! for {{ project?.name }}</p>
+  <table mat-table [dataSource]="scoreBoardData" class="mat-elevation-z8">
+    <ng-container matColumnDef="placement">
+      <th mat-header-cell *matHeaderCellDef>Platz</th>
+      <td mat-cell *matCellDef="let entry">{{ entry.placement }}</td>
+    </ng-container>
+    <ng-container matColumnDef="teamId">
+      <th mat-header-cell *matHeaderCellDef>Nr</th>
+      <td mat-cell *matCellDef="let entry">
+        {{ entry.teamId }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let entry">{{ entry.teamName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="challengesSolved">
+      <th mat-header-cell *matHeaderCellDef>Absolviert</th>
+      <td mat-cell *matCellDef="let entry">{{ entry.placement }}</td>
+    </ng-container>
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef>Punkte</th>
+      <td mat-cell *matCellDef="let entry">{{ entry.points }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

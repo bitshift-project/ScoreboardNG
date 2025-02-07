@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { Project } from '../../domain/Project';
 import { Team } from '../../domain/Team';
 import { Challenge } from '../../domain/Challenge';
+import { ScoreBoardEntry } from '../../domain/ScoreBoardEntry';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class ShareDataService {
   globalTeams = signal<Team[]>([]);
   globalChallenges = signal<Challenge[]>([]);
   globalSelectedProject = signal<Project | undefined>(undefined);
+  globalScoreBoard = signal<ScoreBoardEntry[]>([]);
 
   constructor() { }
 }

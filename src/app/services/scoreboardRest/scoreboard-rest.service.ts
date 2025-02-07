@@ -11,7 +11,7 @@ export class ScoreboardRestService {
 
   async getScoreboardForId(id: number): Promise<ScoreBoardEntry[]> {
     const response = await fetch(
-      `${environment.apiUrl}/project${id}/scoreboard`
+      `${environment.apiUrl}/project/${id}/scoreboard`
     );
     return response.json().then((data) => data as ScoreBoardEntry[]);
   }

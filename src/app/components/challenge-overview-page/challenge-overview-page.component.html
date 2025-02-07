@@ -1,0 +1,12 @@
+<div class="challengePageContainer">
+  <p>Challenges:</p>
+  <div class="challengeCardContainer">
+    <app-challenge-card
+      *ngFor="let challenge of challenges"
+      [title]="challenge.name"
+      [shortDescription]="challenge.shortDescription"
+      [longDescription]="challenge.longDescription"
+      [tags]="challenge.tags"
+    />
+  </div>
+</div>

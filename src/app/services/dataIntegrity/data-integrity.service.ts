@@ -3,6 +3,7 @@ import { ShareDataService } from '../shareData/share-data.service';
 import { ProjectRestService } from '../projectRest/project-rest.service';
 import { TeamRestService } from '../teamRest/team-rest.service';
 import { ChallengeRestService } from '../challengeRest/challenge-rest.service';
+import { ScoreboardRestService } from '../scoreboardRest/scoreboard-rest.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export class DataIntegrityService {
   projectRestService = inject(ProjectRestService);
   teamRestService = inject(TeamRestService);
   challengeRestService = inject(ChallengeRestService);
+  scoreBoardRestService = inject(ScoreboardRestService);
 
   start() {
     this.checkForUpdates();
@@ -37,6 +39,9 @@ export class DataIntegrityService {
         .then((challenges) =>
           this.shareDataService.globalChallenges.set(challenges)
         );
+      this.scoreBoardRestService
+        .getScoreboardForId(selectedProject.projectId)
+        .then((data) => this.shareDataService.globalScoreBoard.set(data));
     }
   }
 
