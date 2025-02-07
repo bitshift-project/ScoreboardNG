@@ -14,11 +14,11 @@ import { Challenge } from '../../domain/Challenge';
 export class ChallengeOverviewPageComponent {
   shareDataService = inject(ShareDataService);
   route = inject(ActivatedRoute);
-  challenges = this.shareDataService.globalChallenges().sort(this.sortForLength);
+  challenges = [...this.shareDataService.globalChallenges()].sort(this.sortForLength);
 
   constructor(){
     effect(() =>{
-      this.challenges = this.shareDataService.globalChallenges().sort(this.sortForLength);
+      this.challenges = [...this.shareDataService.globalChallenges()].sort(this.sortForLength);
     });
   }
 

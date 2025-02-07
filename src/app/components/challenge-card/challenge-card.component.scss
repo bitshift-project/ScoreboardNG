@@ -1,3 +1,31 @@
 .challenge-card{
-    width: 30vh;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tagContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+}
+
+mat-card-subtitle{
+    font-size: medium;
+    margin-top: 5px;
+}
+
+.points{
+    color: rgb(169, 245, 175);
+}
+
+.short-description{
+    color: rgb(145, 145, 145);
+}
+
+.long-description{
+    color: rgb(223, 223, 223);
 }

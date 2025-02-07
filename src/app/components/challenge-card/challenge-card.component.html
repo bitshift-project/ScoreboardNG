@@ -1,11 +1,15 @@
 <mat-card class="challenge-card" appearance="outlined">
   <mat-card-header>
-    <mat-card-title>{{title()}}</mat-card-title>
-    <mat-card-subtitle>{{shortDescription()}}</mat-card-subtitle>
+    <mat-card-title>{{ challenge().name }}</mat-card-title>
+    <mat-card-subtitle class="points"> Points: {{ challenge().points }}</mat-card-subtitle>
+    <mat-card-subtitle class="short-description">{{ challenge().shortDescription }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>
-      {{longDescription()}}
+    <p class="long-description">
+      {{ challenge().longDescription }}
     </p>
+    <div class="tagContainer">
+      <app-tag-chip *ngFor="let tag of sortedTags" [tag]="tag" />
+    </div>
   </mat-card-content>
 </mat-card>

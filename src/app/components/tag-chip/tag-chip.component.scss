@@ -1,0 +1,57 @@
+.tag {
+  border: solid;
+  border-radius: 5px;
+  min-height: 17px;
+  width: min-content;
+  padding: 1px;
+  font-size: small;
+  display: flex;
+  align-items: center;
+}
+
+//difficulty colors:
+.tag-red {
+  border-color: rgb(144, 3, 3);
+  background-color: rgb(144, 3, 3);
+}
+
+.tag-yellow {
+  border-color: rgb(195, 185, 3);
+  background-color: rgb(195, 185, 3);
+}
+
+.tag-green {
+  border-color: rgb(1, 110, 26);
+  background-color: rgb(1, 110, 26);
+}
+
+// other tag colors:
+.tag-blue {
+  border-color: rgb(3, 3, 139);
+  background-color: rgb(3, 3, 139);
+}
+
+.tag-pink {
+  border-color: rgb(128, 0, 123);
+  background-color: rgb(128, 0, 123);
+}
+
+.tag-cyan {
+  border-color: rgb(0, 117, 117);
+  background-color: rgb(0, 117, 117);
+}
+
+.tag-brown {
+  border-color: rgb(163, 90, 7);
+  background-color: rgb(163, 90, 7);
+}
+
+.tag-violet {
+    border-color: rgb(68, 0, 117);
+    background-color: rgb(68, 0, 117);
+}
+
+.tag-lime {
+    border-color: rgb(141, 193, 0);
+    background-color: rgb(141, 193, 0);
+}
