@@ -2,9 +2,9 @@
   <header>
     <app-navigation-bar />
   </header>
-  <div>
-    <section [@openClose]="o.isActivated ? o.activatedRoute : ''">
-      <router-outlet #o="outlet" />
-    </section>
-  </div>
+  @if (isSynced) {
+  <section [@openClose]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet" />
+  </section>
+  }
 </main>

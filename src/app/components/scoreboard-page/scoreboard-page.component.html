@@ -1,3 +1,18 @@
-<div class="scoreboard-container">
-  <app-scoreboard-table />
+<div class="scoreboard-page-container">
+  <div class="latest-entry-card">
+    @if(latestEntry){
+    <p class="entry-heading">
+      Das Team
+      <span class="team-name">{{ latestEntryTeamName }}</span>
+      hat gerade die Challenge
+      <span class="challenge-name">{{ latestCompletedChallenge?.name }}</span>
+      abgeschlossen und dafür saftige
+      <span class="entry-points">{{ latestEntry.points }} Punkte</span>
+      bekommen!
+    </p>
+    }
+  </div>
+  <div class="scoreboard-container">
+    <app-scoreboard-table />
+  </div>
 </div>

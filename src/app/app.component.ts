@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { DataIntegrityService } from './services/dataIntegrity/data-integrity.service';
 import { openCloseAnimation } from './animations/openClose';
+import { ShareDataService } from './services/shareData/share-data.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,14 @@ import { openCloseAnimation } from './animations/openClose';
 })
 export class AppComponent {
   dataIntegrityService = inject(DataIntegrityService);
+  shareDataService = inject(ShareDataService);
+  isSynced = this.shareDataService.isSynced();
+
+  constructor(){
+    effect(() =>{
+      this.isSynced = this.shareDataService.isSynced();
+    });
+  }
 
   ngOnInit() {
     this.dataIntegrityService.start();

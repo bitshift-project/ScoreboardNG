@@ -5,6 +5,7 @@ import { TeamRestService } from '../teamRest/team-rest.service';
 import { ChallengeRestService } from '../challengeRest/challenge-rest.service';
 import { ScoreboardRestService } from '../scoreboardRest/scoreboard-rest.service';
 import { TagsRestService } from '../tagsRest/tags-rest.service';
+import { EntryRestService } from '../entryRest/entry-rest.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class DataIntegrityService {
   challengeRestService = inject(ChallengeRestService);
   scoreBoardRestService = inject(ScoreboardRestService);
   tagsRestService = inject(TagsRestService);
+  entryRestService = inject(EntryRestService);
 
   start() {
     this.checkForUpdates();
@@ -81,6 +83,16 @@ export class DataIntegrityService {
             this.shareDataService.globalTags.set(tags);
           }
         });
+
+      //latest entry:
+      this.entryRestService.getLatestEntry(selectedProject.projectId)
+      .then((entry)=>{
+        const oldEntry = this.shareDataService.globalLatestEntry();
+        if(!this.isEqual(oldEntry, entry)){
+          console.log('updating latest entry!');
+          this.shareDataService.globalLatestEntry.set(entry);
+        }
+      })
     }
   }
 
