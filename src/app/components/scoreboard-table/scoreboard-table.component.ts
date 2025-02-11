@@ -16,7 +16,13 @@ export class ScoreboardTableComponent {
 
   project = this.shareDataService.globalSelectedProject();
   scoreBoardData: ScoreBoardEntry[] = this.shareDataService.globalScoreBoard();
-  displayedColumns: string[] = ['placement', 'teamId', 'name', 'challengesSolved', 'points'];
+  displayedColumns: string[] = [
+    'placement',
+    'teamId',
+    'name',
+    'challengesSolved',
+    'points',
+  ];
 
   constructor() {
     effect(() => {
@@ -24,6 +30,4 @@ export class ScoreboardTableComponent {
       this.scoreBoardData = this.shareDataService.globalScoreBoard();
     });
   }
-
-  
 }

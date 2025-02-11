@@ -1,5 +1,18 @@
-table{
-    width: 100%;
-    background-color: black;
+table {
+  width: 100%;
+  background-color: black;
+  border-collapse: collapse;
 }
 
+tr {
+  height: 60px;
+}
+td {
+  text-align: center;
+}
+
+.table-content {
+  border: solid;
+  border-color: rgb(81, 117, 112);
+  border-width: 1px 0 0 0;
+}

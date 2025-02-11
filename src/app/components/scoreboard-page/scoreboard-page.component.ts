@@ -13,11 +13,9 @@ export class ScoreboardPageComponent {
   route = inject(ActivatedRoute);
   shareDataService = inject(ShareDataService);
   latestEntry = this.shareDataService.globalLatestEntry();
-  selectedProject = this.shareDataService.globalSelectedProject();
 
   constructor() {
     effect(() => {
-      this.selectedProject = this.shareDataService.globalSelectedProject();
       this.latestEntry = this.shareDataService.globalLatestEntry();
     });
   }

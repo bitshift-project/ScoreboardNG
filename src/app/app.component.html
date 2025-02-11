@@ -2,7 +2,9 @@
   <header>
     <app-navigation-bar />
   </header>
-  <section class="content">
-    <router-outlet />
-  </section>
+  <div>
+    <section [@openClose]="o.isActivated ? o.activatedRoute : ''">
+      <router-outlet #o="outlet" />
+    </section>
+  </div>
 </main>
