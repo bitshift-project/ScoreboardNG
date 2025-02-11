@@ -1,0 +1,38 @@
+.challenge-filter-container{
+    background-color: rgba(0, 0, 0, 0.34);
+    border: solid;
+    border-radius: 10px;
+    border-color: rgba(255, 119, 0, 0.621);
+    width: 300px;
+    min-height: 320px;
+    position: fixed;
+    margin-left: 50px;
+}
+
+.challenge-toggle{
+    margin-bottom: 15px;
+}
+
+.filter-heading{
+    font-size: large;
+    margin-left: 10px;
+    color: rgb(221, 221, 188);
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.tag-box{
+    width: 260px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+}

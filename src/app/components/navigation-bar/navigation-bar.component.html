@@ -1,6 +1,6 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
   <div class="toolbarItems">
-    <div class="bitshiftLogo" (click)="redirectLandingPage()">
+    <div class="bitshiftLogo" (click)="redirectLandingPage()" (keydown)="redirectLandingPage()">
       {{ "Bitshift@School" }}
     </div>
     @if(selectedProject){

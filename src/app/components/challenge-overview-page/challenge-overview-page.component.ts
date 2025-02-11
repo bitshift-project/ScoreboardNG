@@ -3,22 +3,22 @@ import { ShareDataService } from '../../services/shareData/share-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { ChallengeCardComponent } from "../challenge-card/challenge-card.component";
 import { CommonModule } from '@angular/common';
-import { Challenge } from '../../domain/Challenge';
+import { ChallengeFilterComponent } from '../challenge-filter/challenge-filter.component';
 
 @Component({
   selector: 'app-challenge-overview-page',
-  imports: [ChallengeCardComponent, CommonModule],
+  imports: [ChallengeCardComponent, CommonModule, ChallengeFilterComponent],
   templateUrl: './challenge-overview-page.component.html',
   styleUrl: './challenge-overview-page.component.scss'
 })
 export class ChallengeOverviewPageComponent {
   shareDataService = inject(ShareDataService);
   route = inject(ActivatedRoute);
-  challenges = [...this.shareDataService.globalChallenges()].sort(this.sortForLength);
+  challenges = this.shareDataService.filteredChallenges();
 
   constructor(){
     effect(() =>{
-      this.challenges = [...this.shareDataService.globalChallenges()].sort(this.sortForLength);
+      this.challenges = this.shareDataService.filteredChallenges();
     });
   }
 
@@ -40,8 +40,5 @@ export class ChallengeOverviewPageComponent {
     }
   }
 
-  private sortForLength(a : Challenge , b : Challenge){
-    return b.longDescription.length - a.longDescription.length; 
-  }
 
 }

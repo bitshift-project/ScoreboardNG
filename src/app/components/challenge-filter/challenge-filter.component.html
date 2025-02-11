@@ -1,0 +1,27 @@
+<div class="challenge-filter-container">
+  <p class="filter-heading">Filter:</p>
+  <div class="input-box">
+    <mat-form-field>
+      <mat-label>Challenges durchsuchen</mat-label>
+      <input matInput placeholder="..." [(ngModel)]="filterString" (keyup)="filterChallenges()"/>
+    </mat-form-field>
+    <mat-slide-toggle class="challenge-toggle" [(ngModel)]="onlyShowUnsolved" (change)="filterChallenges()">
+      Nur nicht-Absolvierte
+    </mat-slide-toggle>
+    <mat-form-field>
+      <mat-label>Tags auswählen</mat-label>
+      <mat-select [(ngModel)]="selectedTags" multiple (selectionChange)="filterChallenges()">
+        @for(tag of tags; track tag.tagId){
+        <mat-option [value]="tag">
+          {{ tag.content }}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <div class="tag-box">
+      @for(tag of selectedTags; track tag.tagId){
+      <app-tag-chip [tag]="tag" />
+      }
+    </div>
+  </div>
+</div>
