@@ -9,14 +9,18 @@ import { Entry } from '../../domain/Entry';
   providedIn: 'root',
 })
 export class ShareDataService {
+  //managed by data integrity service
   globalProjects = signal<Project[]>([]);
   globalTeams = signal<Team[]>([]);
   globalChallenges = signal<Challenge[]>([]);
-  globalSelectedProject = signal<Project | undefined>(undefined);
   globalScoreBoard = signal<ScoreBoardEntry[]>([]);
   globalTags = signal<Tag[]>([]);
   globalLatestEntry = signal<Entry | undefined>(undefined);
+  
+  //managad through user input
   filteredChallenges = signal<Challenge[]>([]);
+  globalSelectedProject = signal<Project | undefined>(undefined);
+  globalSelectedTeam = signal<Team | undefined>(undefined);
 
   isSynced = signal(false);
 

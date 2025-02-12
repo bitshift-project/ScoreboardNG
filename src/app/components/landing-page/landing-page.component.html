@@ -2,15 +2,19 @@
   <div class="content-container">
     <p class="welcome-heading">{{ "Willkommen bei Bitshift@School!" }}</p>
     <p>Lege direkt los und wähle deine Schule aus:</p>
-    <mat-form-field class="select-field">
-      <mat-label>Projekte</mat-label>
-      <mat-select>
+    <table>
+      <th>
         @for (project of projects; track project.projectId) {
-        <mat-option (onSelectionChange)="selectProject(project.projectId)">{{
-          project.name
-        }}</mat-option>
+        <tr class="project-table-row">
+          <p class="project-name">
+            {{ project.name }}
+          </p>
+          <button mat-fab (click)="selectProject(project.projectId)">
+            <mat-icon>double_arrow</mat-icon>
+          </button>
+        </tr>
         }
-      </mat-select>
-    </mat-form-field>
+      </th>
+    </table>
   </div>
 </div>

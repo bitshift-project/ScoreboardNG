@@ -1,4 +1,4 @@
-.landing-page-container {
+.team-select-page-container {
   border: solid;
   border-radius: 20px;
   border-color: rgb(0, 255, 217);
@@ -15,29 +15,38 @@
   align-items: center;
 }
 
+.big-info {
+  font-size: larger;
+  margin-top: 0;
+}
+
+.small-info{
+  color: rgb(182, 182, 181);
+  margin-top: 0;
+}
+
 .welcome-heading {
   font-size: x-large;
 }
 .select-field {
   width: 310px;
 }
-.project-table-row {
+.team-table-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 200px;
+  width: 260px;
   border: solid;
   border-color: rgb(81, 117, 112);
   border-width: 1px 0 0 0;
   height: 60px;
 }
-.project-name{
-    margin-left: 10px;
+.team-name {
+  margin-left: 10px;
 }
 
 table {
   border-collapse: collapse;
   margin-bottom: 20px;
 }
-

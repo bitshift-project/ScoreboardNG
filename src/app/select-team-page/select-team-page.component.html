@@ -1,0 +1,21 @@
+<div class="team-select-page-container">
+    <div class="content-container">
+      <p class="welcome-heading">{{ "Willkommen beim Projekt " + selectedProject?.name }}</p>
+      <p class="big-info">Wähle als nächstes dein Team aus:</p>
+      <p class="small-info">ist dein Team noch nicht dabei, frage einfach um Hilfe :)</p>
+      <table>
+        <th>
+          @for (team of teams; track team.teamId) {
+          <tr class="team-table-row">
+            <p class="team-name">
+              {{ team.name }}
+            </p>
+            <button mat-fab (click)="teamButtonClicked(team)">
+              <mat-icon>double_arrow</mat-icon>
+            </button>
+          </tr>
+          }
+        </th>
+      </table>
+    </div>
+  </div>
