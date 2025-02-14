@@ -20,7 +20,7 @@ export const openCloseAnimation = trigger('openClose', [
         ':enter',
         [
           style({ transform: 'translateY(1200px)', zIndex: 1 }),
-          animate('0.5s 0.5s ease-out', style({ transform: 'translateX(0%)' })),
+          animate('0.3s 0.3s ease-out', style({ transform: 'translateX(0%)' })),
         ],
         { optional: true }
       ),
@@ -28,7 +28,7 @@ export const openCloseAnimation = trigger('openClose', [
         ':leave',
         [
           style({ transform: 'translateY(0%)', zIndex: 2 }),
-          animate('0.5s ease-in', style({ transform: 'translateY(-120%)' })),
+          animate('0.3s ease-in', style({ transform: 'translateY(-120%)' })),
         ],
         { optional: true }
       ),

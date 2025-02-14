@@ -1,31 +1,53 @@
-.toolbar{
-    position: fixed;
-    top: 0;
-    z-index: 999;
+.toolbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 999;
 }
 
-.toolbarItems{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 15px;
-    align-items: baseline;
+.toolbarItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 15px;
+  align-items: baseline;
 }
 
-.bitshiftLogo{
-    border-style: hidden solid hidden solid;
-    border-color: rgb(111, 17, 100);
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-radius: 5px;
+.bitshiftLogo {
+  border-style: hidden solid hidden solid;
+  border-color: rgb(111, 17, 100);
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 5px;
 }
-.bitshiftLogo:hover{
-    border-color: rgb(255, 5, 180);
-    cursor: pointer;
+.bitshiftLogo:hover {
+  border-color: rgb(255, 5, 180);
+  cursor: pointer;
 }
 
-.subItem{
-    font-size: medium;
+.subItem {
+  font-size: medium;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 50px;
+  margin-left: auto;
+  height: 20px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.team-container:hover {
+  background-color: gray;
+}
+
+.team-name {
+  font-size: medium;
+  margin-left: 10px;
 }

@@ -1,11 +1,25 @@
 <mat-toolbar class="toolbar">
   <div class="toolbarItems">
-    <div class="bitshiftLogo" (click)="redirectLandingPage()" (keydown)="redirectLandingPage()">
+    <div
+      class="bitshiftLogo"
+      (click)="redirectLandingPage()"
+      (keydown)="redirectLandingPage()"
+    >
       {{ "Bitshift@School" }}
     </div>
     @if(selectedProject){
-        <button mat-button class="subItem" (click)="redirectScoreboard()">Scoreboard</button>
-        <button mat-button class="subItem" (click)="redirectChallenges()">Challenges</button>
+    <button mat-button class="subItem" (click)="redirectScoreboard()">
+      Scoreboard
+    </button>
+    <button mat-button class="subItem" (click)="redirectChallenges()">
+      Challenges
+    </button>
     }
   </div>
+  @if(selectedTeam){
+  <div class="team-container">
+    <mat-icon>group</mat-icon>
+    <p class="team-name">{{ selectedTeam.name }}</p>
+  </div>
+  }
 </mat-toolbar>

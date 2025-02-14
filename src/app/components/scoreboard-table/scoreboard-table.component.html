@@ -12,7 +12,7 @@
         <td>{{entry.placement}}</td>
         <td>{{entry.teamId}}</td>
         <td>{{entry.teamName}}</td>
-        <td>{{entry.placement}}/12</td>
+        <td>{{getCompletedChallengeCountForTeam(entry.teamId)}}/{{challengeCount}}</td>
         <td>{{entry.points}}</td>
       </tr>
     }
