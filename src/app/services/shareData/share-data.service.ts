@@ -21,6 +21,7 @@ export class ShareDataService {
   filteredChallenges = signal<Challenge[]>([]);
   globalSelectedProject = signal<Project | undefined>(undefined);
   globalSelectedTeam = signal<Team | undefined>(undefined);
+  globalCompletedEntries = signal<Entry[]>([]);
 
   isSynced = signal(false);
 

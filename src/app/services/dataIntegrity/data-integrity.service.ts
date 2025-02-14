@@ -85,14 +85,29 @@ export class DataIntegrityService {
         });
 
       //latest entry:
-      this.entryRestService.getLatestEntry(selectedProject.projectId)
-      .then((entry)=>{
-        const oldEntry = this.shareDataService.globalLatestEntry();
-        if(!this.isEqual(oldEntry, entry)){
-          console.log('updating latest entry!');
-          this.shareDataService.globalLatestEntry.set(entry);
-        }
-      })
+      this.entryRestService
+        .getLatestEntry(selectedProject.projectId)
+        .then((entry) => {
+          const oldEntry = this.shareDataService.globalLatestEntry();
+          if (!this.isEqual(oldEntry, entry)) {
+            console.log('updating latest entry!');
+            this.shareDataService.globalLatestEntry.set(entry);
+          }
+        });
+
+      const selectedTeam = this.shareDataService.globalSelectedTeam();
+      //entries for team:
+      if (selectedTeam) {
+        this.entryRestService
+          .getEntriesForTeam(selectedTeam.teamId)
+          .then((entries) => {
+            const oldEntries = this.shareDataService.globalCompletedEntries();
+            if (!this.isEqual(oldEntries, entries)) {
+              console.log('updating team entries!');
+              this.shareDataService.globalCompletedEntries.set(entries);
+            }
+          });
+      }
     }
   }
 

@@ -1,5 +1,4 @@
 import { Component, effect, inject } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 import { ScoreBoardEntry } from '../../domain/ScoreBoardEntry';
 import { EntryRestService } from '../../services/entryRest/entry-rest.service';
 import { ScoreboardRestService } from '../../services/scoreboardRest/scoreboard-rest.service';
@@ -12,7 +11,7 @@ interface CompletedTuple {
 }
 @Component({
   selector: 'app-scoreboard-table',
-  imports: [MatTableModule],
+  imports: [],
   templateUrl: './scoreboard-table.component.html',
   styleUrl: './scoreboard-table.component.scss',
 })

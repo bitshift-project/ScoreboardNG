@@ -39,7 +39,7 @@ export class ChallengeFilterComponent {
   }
 
   filterChallenges() {
-    const filteredChallenges = this.challenges.filter(
+    let filteredChallenges = this.challenges.filter(
       (challenge) =>
         challenge.name.toLowerCase().includes(this.filterString.toLowerCase()) &&
         (this.selectedTags.length === 0 ||
@@ -48,6 +48,12 @@ export class ChallengeFilterComponent {
               (selectedTag) => selectedTag.tagId === tag.tagId
             )
           ))
+    );
+    filteredChallenges = filteredChallenges.filter(challenge => 
+      !this.onlyShowUnsolved ||
+        !this.shareDataService
+        .globalCompletedEntries()
+        .some((c) => c.challengeId === challenge.challengeId)
     );
     filteredChallenges.sort(this.sortForLength);
     this.shareDataService.filteredChallenges.set(filteredChallenges);

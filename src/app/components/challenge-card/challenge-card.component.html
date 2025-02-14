@@ -1,4 +1,4 @@
-<mat-card class="challenge-card" appearance="outlined">
+<mat-card class="challenge-card" appearance="outlined" [ngStyle]="{'border-color': isCompleted ? 'green' : '' }">
   <mat-card-header>
     <mat-card-title>{{ challenge().name }}</mat-card-title>
     <mat-card-subtitle class="points"> Points: {{ challenge().points }}</mat-card-subtitle>
