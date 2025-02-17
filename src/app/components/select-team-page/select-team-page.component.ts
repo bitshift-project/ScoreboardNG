@@ -1,9 +1,9 @@
 import { Component, effect, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ShareDataService } from '../services/shareData/share-data.service';
+import { ShareDataService } from '../../services/shareData/share-data.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Team } from '../domain/Team';
+import { Team } from '../../domain/Team';
 
 @Component({
   selector: 'app-select-team-page',
@@ -25,26 +25,10 @@ export class SelectTeamPageComponent {
     });
   }
 
-  ngOnInit() {
-    this.updateCurrentProject(5);
-  }
-
-  teamButtonClicked(team: Team){
+  teamButtonClicked(team: Team) {
     this.shareDataService.globalSelectedTeam.set(team);
-    this.router.navigate([`/project/${[this.shareDataService.globalSelectedProject()?.projectId]}`]);
-  }
-
-  //TODO: refactor this so it does not need to be in every top level path component
-  updateCurrentProject(retries: number) {
-    const projectIdFromPath = Number(this.route.snapshot.params['projectId']);
-    for (const project of this.shareDataService.globalProjects()) {
-      if (project.projectId === projectIdFromPath) {
-        this.shareDataService.globalSelectedProject.set(project);
-        return;
-      }
-    }
-    if (retries > 0) {
-      setTimeout(() => this.updateCurrentProject(retries--), 500);
-    }
+    this.router.navigate([
+      `/project/${[this.shareDataService.globalSelectedProject()?.projectId]}`,
+    ]);
   }
 }

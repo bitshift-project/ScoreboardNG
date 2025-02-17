@@ -28,22 +28,4 @@ export class ScoreboardPageComponent {
         .find((c) => c.challengeId === this.latestEntry?.challengeId);
     });
   }
-
-  ngOnInit() {
-    this.updateCurrentProject(5);
-  }
-
-  //TODO: refactor this so it does not need to be in every top level path component
-  updateCurrentProject(retries: number) {
-    const projectIdFromPath = Number(this.route.snapshot.params['projectId']);
-    for (const project of this.shareDataService.globalProjects()) {
-      if (project.projectId === projectIdFromPath) {
-        this.shareDataService.globalSelectedProject.set(project);
-        return;
-      }
-    }
-    if (retries > 0) {
-      setTimeout(() => this.updateCurrentProject(retries--), 500);
-    }
-  }
 }
