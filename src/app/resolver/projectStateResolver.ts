@@ -11,7 +11,8 @@ export const projectStateResolver: ResolveFn<void> = (
   state: RouterStateSnapshot
 ) => {
 const shareDataService = inject(ShareDataService);
-  updateCurrentProject(5, route, shareDataService);
+  updateCurrentProject(10, route, shareDataService);
+  updateCurrentTeam(10, route, shareDataService);
 };
 
 function updateCurrentProject(retries: number, route: ActivatedRouteSnapshot, shareDataService : ShareDataService) {
@@ -23,6 +24,20 @@ function updateCurrentProject(retries: number, route: ActivatedRouteSnapshot, sh
     }
   }
   if (retries > 0) {
-    setTimeout(() => updateCurrentProject(retries--, route, shareDataService), 500);
+    setTimeout(() => updateCurrentProject(--retries, route, shareDataService), 500);
+  }
+}
+
+function updateCurrentTeam(retries: number, route: ActivatedRouteSnapshot, shareDataService : ShareDataService) {
+  const teamIdFromPath = Number(route.params['teamId']);
+  console.log("here!", teamIdFromPath);
+  for (const team of shareDataService.globalTeams()) {
+    if (team.teamId === teamIdFromPath) {
+      shareDataService.globalSelectedTeam.set(team);
+      return;
+    }
+  }
+  if (retries > 0) {
+    setTimeout(() => updateCurrentTeam(--retries, route, shareDataService), 500);
   }
 }

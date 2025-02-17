@@ -12,13 +12,13 @@ export const routes: Routes = [
         title: 'Landing page',
     },
     {
-        path: 'project/:projectId',
+        path: 'project/:projectId/:teamId/scoreboard',
         component: ScoreboardPageComponent,
         title: 'Scoreboard',
         resolve: {_ : projectStateResolver}
     },
     {
-        path: 'project/:projectId/challenges',
+        path: 'project/:projectId/:teamId/challenges',
         component: ChallengeOverviewPageComponent,
         title: 'Scoreboard',
         resolve: {_ : projectStateResolver}

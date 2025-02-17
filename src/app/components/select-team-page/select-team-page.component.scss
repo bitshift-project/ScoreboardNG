@@ -46,6 +46,32 @@
   margin-left: 10px;
 }
 
+button{
+  width: 50px;
+  height: 50px;
+  margin-right: 4px;
+}
+
+.no-team-button{
+  background-color: rgb(90, 75, 91);
+  width: 48px;
+  height: 48px;
+  margin-right: 6px;
+}
+
+.no-team-arrow{
+  color: rgb(229, 169, 253);
+}
+
+.last-row{
+  height: 80px;
+}
+
+.no-selection-text{
+  margin-left: 10px;
+  color: rgb(157, 157, 157);
+}
+
 table {
   border-collapse: collapse;
   margin-bottom: 20px;

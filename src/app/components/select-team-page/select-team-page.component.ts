@@ -27,8 +27,12 @@ export class SelectTeamPageComponent {
 
   teamButtonClicked(team: Team) {
     this.shareDataService.globalSelectedTeam.set(team);
+    this.rerouteToScoreBoardWithTeam(team.teamId);
+  }
+
+  rerouteToScoreBoardWithTeam(teamId: number | undefined){
     this.router.navigate([
-      `/project/${[this.shareDataService.globalSelectedProject()?.projectId]}`,
+      `/project/${[this.shareDataService.globalSelectedProject()?.projectId]}/${teamId}/scoreboard`,
     ]);
   }
 }

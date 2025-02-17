@@ -25,11 +25,11 @@ export class NavigationBarComponent {
   }
 
   redirectScoreboard(){
-    this.router.navigate([`/project/${this.selectedProject?.projectId}`]);
+    this.router.navigate([`/project/${this.selectedProject?.projectId}/${this.selectedTeam?.teamId}/scoreboard`]);
   }
 
   redirectChallenges(){
-    this.router.navigate([`/project/${this.selectedProject?.projectId}/challenges`]);
+    this.router.navigate([`/project/${this.selectedProject?.projectId}/${this.selectedTeam?.teamId}/challenges`]);
   }
   redirectLandingPage(){
     this.router.navigate([`/`]);
