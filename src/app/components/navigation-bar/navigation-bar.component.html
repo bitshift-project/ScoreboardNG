@@ -23,7 +23,20 @@
     <p class="team-name">{{ selectedTeam.name }}</p>
   </div>
   }
-  <button mat-icon-button class="login-icon" (click)="loginClicked()">
-    <mat-icon>login</mat-icon>
+  <button mat-icon-button class="login-icon" (click)="loginButtonPressed()">
+    <mat-icon
+    [@loginButtonRotation]="isLoggedIn"
+    >login</mat-icon>
   </button>
 </mat-toolbar>
+@if(showPWDiv){
+<div class="pw-input-div"
+[ngClass]="{'pw-input-div-correct': isLoggedIn}"
+@passwordOpenClose>
+  <mat-form-field
+  class="password-input">
+    <mat-label>password</mat-label>
+    <input matInput type="password" #pw (keyup)="updatePassword(pw.value)" />
+  </mat-form-field>
+</div>
+}

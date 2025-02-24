@@ -56,3 +56,24 @@
   font-size: medium;
   margin-left: 10px;
 }
+
+.pw-input-div{
+  opacity: 0.6;
+  z-index: 10;
+  position: fixed;
+  margin-top: -56px;
+  margin-left: 86%;
+  background-color: black;
+  border: solid;
+  border-radius: 10px;
+  border-color: rgb(146, 42, 42);
+  border-width: 2px;
+}
+
+.pw-input-div-correct{
+  border-color: rgb(7, 179, 12);
+}
+
+.password-input{
+  margin: 5px 5px -12px 5px;
+}
