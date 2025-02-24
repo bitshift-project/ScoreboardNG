@@ -1,0 +1,40 @@
+<div class="adding-container">
+  <mat-tab-group>
+    <mat-tab label="Eintrag">
+      <div class="add-form">
+        <form>
+          <mat-form-field>
+            <mat-label>Challenge</mat-label>
+            <mat-select>
+              @for (challenge of challenges; track challenge.challengeId) {
+              <mat-option [value]="challenge">{{
+                challenge.name
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Team</mat-label>
+            <mat-select>
+              @for (team of teams; track team.teamId) {
+              <mat-option [value]="team.teamId">{{ team.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Points</mat-label>
+            <input matInput [value]="" />
+          </mat-form-field>
+
+          <button mat-flat-button>Hinzufügen</button>
+        </form>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Projekt"> Content 1 </mat-tab>
+    <mat-tab label="Team"> Content 2 </mat-tab>
+    <mat-tab label="Challenge"> Content 3 </mat-tab>
+    <mat-tab label="Tags"> Content 3 </mat-tab>
+    <mat-tab label="Tag -> Challenge"> Content 3 </mat-tab>
+  </mat-tab-group>
+</div>

@@ -16,6 +16,7 @@ import { environment } from '../../../environment/environment';
 import { passwordOpenClose } from '../../animations/passwordOpenClose';
 import { ShareDataService } from '../../services/shareData/share-data.service';
 import { loginButtonRotation } from '../../animations/loginButtonRotation';
+import { fadeIn } from '../../animations/fadeIn';
 @Component({
   selector: 'app-navigation-bar',
   imports: [
@@ -29,7 +30,7 @@ import { loginButtonRotation } from '../../animations/loginButtonRotation';
   ],
   templateUrl: './navigation-bar.component.html',
   styleUrl: './navigation-bar.component.scss',
-  animations: [passwordOpenClose, loginButtonRotation],
+  animations: [passwordOpenClose, loginButtonRotation, fadeIn],
 })
 export class NavigationBarComponent {
   @ViewChild('pw') myInputField: ElementRef | undefined;
@@ -85,5 +86,13 @@ export class NavigationBarComponent {
   }
   redirectLandingPage() {
     this.router.navigate([`/`]);
+  }
+
+  redirectAdding() {
+    this.router.navigate([`project/${this.selectedProject?.projectId}/${this.selectedTeam?.teamId}/admin-tools/adding`]);
+  }
+
+  redirectDeleting() {
+    this.router.navigate([`project/${this.selectedProject?.projectId}/${this.selectedTeam?.teamId}/admin-tools/deleting`]);
   }
 }
