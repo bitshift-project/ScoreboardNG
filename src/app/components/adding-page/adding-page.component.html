@@ -1,15 +1,13 @@
 <div class="adding-container">
   <mat-tab-group>
     <mat-tab label="Eintrag">
-      <div class="add-form">
-        <form>
+      <form>
+        <div class="add-form">
           <mat-form-field>
             <mat-label>Challenge</mat-label>
             <mat-select>
               @for (challenge of challenges; track challenge.challengeId) {
-              <mat-option [value]="challenge">{{
-                challenge.name
-              }}</mat-option>
+              <mat-option [value]="challenge">{{ challenge.name }}</mat-option>
               }
             </mat-select>
           </mat-form-field>
@@ -27,8 +25,8 @@
           </mat-form-field>
 
           <button mat-flat-button>Hinzufügen</button>
-        </form>
-      </div>
+        </div>
+      </form>
     </mat-tab>
 
     <mat-tab label="Projekt"> Content 1 </mat-tab>
