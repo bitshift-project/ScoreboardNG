@@ -6,6 +6,7 @@ import { ChallengeRestService } from '../challengeRest/challenge-rest.service';
 import { ScoreboardRestService } from '../scoreboardRest/scoreboard-rest.service';
 import { TagsRestService } from '../tagsRest/tags-rest.service';
 import { EntryRestService } from '../entryRest/entry-rest.service';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,8 @@ export class DataIntegrityService {
   scoreBoardRestService = inject(ScoreboardRestService);
   tagsRestService = inject(TagsRestService);
   entryRestService = inject(EntryRestService);
+
+  authService = inject(AuthService);
 
   start() {
     this.checkForUpdates();

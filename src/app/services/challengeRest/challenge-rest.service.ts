@@ -2,12 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { Challenge, ChallengeType } from '../../domain/Challenge';
 import { TagsRestService } from '../tagsRest/tags-rest.service';
+import { FetcherService } from '../fetcher/fetcher.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChallengeRestService {
   tagsRestService: TagsRestService = inject(TagsRestService);
+  fetcher = inject(FetcherService);
 
   constructor() {}
 
@@ -19,7 +21,7 @@ export class ChallengeRestService {
     points: number,
     challengeType: ChallengeType
   ): Promise<Response> {
-    return fetch(`${environment.apiUrl}/project/challenge`, {
+    return this.fetcher.fetch(`${environment.apiUrl}/project/challenge`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,21 +38,21 @@ export class ChallengeRestService {
   }
 
   async getAllChallengesForProject(projectId: number): Promise<Challenge[]> {
-    const response = await fetch(
+    const response = await this.fetcher.fetch(
       `${environment.apiUrl}/project/${projectId}/challenge`
     );
     return response.json().then((data) => this.convertMultipleChallenges(data));
   }
 
   async getChalllengeForId(challengeId: number): Promise<Challenge> {
-    const response = await fetch(
+    const response = await this.fetcher.fetch(
       `${environment.apiUrl}/project/challenge/${challengeId}`
     );
     return response.json().then((data) => this.convertToChallenge(data));
   }
 
   deleteChallenge(challengeId: number): Promise<Response> {
-    return fetch(`${environment.apiUrl}/project/challenge/${challengeId}`, {
+    return this.fetcher.fetch(`${environment.apiUrl}/project/challenge/${challengeId}`, {
       method: 'DELETE',
     });
   }

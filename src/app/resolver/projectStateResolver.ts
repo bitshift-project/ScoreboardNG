@@ -30,7 +30,6 @@ function updateCurrentProject(retries: number, route: ActivatedRouteSnapshot, sh
 
 function updateCurrentTeam(retries: number, route: ActivatedRouteSnapshot, shareDataService : ShareDataService) {
   const teamIdFromPath = Number(route.params['teamId']);
-  console.log("here!", teamIdFromPath);
   for (const team of shareDataService.globalTeams()) {
     if (team.teamId === teamIdFromPath) {
       shareDataService.globalSelectedTeam.set(team);

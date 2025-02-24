@@ -10,12 +10,22 @@
   flex-direction: row;
   justify-content: flex-start;
   gap: 15px;
-  align-items: baseline;
+  align-items: center;
+}
+
+.login-icon{
+  position: absolute;
+  margin-left: 95%;
+}
+
+.bitshift-image{
+  height: 38px;
+  border-radius: 5px;  
 }
 
 .bitshiftLogo {
   border-style: hidden solid hidden solid;
-  border-color: rgb(111, 17, 100);
+  border-color: rgb(132, 83, 127);
   padding-left: 4px;
   padding-right: 4px;
   padding-top: 2px;
@@ -23,7 +33,7 @@
   border-radius: 5px;
 }
 .bitshiftLogo:hover {
-  border-color: rgb(255, 5, 180);
+  border-color: rgb(159, 215, 213);
   cursor: pointer;
 }
 
@@ -36,7 +46,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-right: 50px;
+  margin-right: 130px;
   margin-left: auto;
   height: 20px;
   padding: 8px;

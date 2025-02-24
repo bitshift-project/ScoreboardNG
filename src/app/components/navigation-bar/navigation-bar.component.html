@@ -1,5 +1,6 @@
 <mat-toolbar class="toolbar">
   <div class="toolbarItems">
+    <img src="bitshift.svg" alt="bitshift logo" class="bitshift-image" />
     <div
       class="bitshiftLogo"
       (click)="redirectLandingPage()"
@@ -22,4 +23,7 @@
     <p class="team-name">{{ selectedTeam.name }}</p>
   </div>
   }
+  <button mat-icon-button class="login-icon" (click)="loginClicked()">
+    <mat-icon>login</mat-icon>
+  </button>
 </mat-toolbar>

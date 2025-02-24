@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { Entry } from '../../domain/Entry';
+import { FetcherService } from '../fetcher/fetcher.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EntryRestService {
+  fetcher = inject(FetcherService);
   constructor() {}
 
   createEntry(
@@ -14,7 +16,7 @@ export class EntryRestService {
     time: number | null,
     points: number
   ): Promise<Response> {
-    return fetch(`${environment.apiUrl}/project/team`, {
+    return this.fetcher.fetch(`${environment.apiUrl}/project/team`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,21 +31,21 @@ export class EntryRestService {
   }
 
   async getLatestEntry(projectId: number): Promise<Entry> {
-    const response = await fetch(
+    const response = await this.fetcher.fetch(
       `${environment.apiUrl}/project/${projectId}/challenge/entry/latest`
     );
     return response.json().then((data) => data as Entry);
   }
 
   async getEntriesForTeam(teamId: number): Promise<Entry[]> {
-    const response = await fetch(
+    const response = await this.fetcher.fetch(
       `${environment.apiUrl}/project/challenge/entry/team/${teamId}`
     );
     return response.json().then((data) => data as Entry[]);
   }
 
   deleteEntry(entryId: number): Promise<Response> {
-    return fetch(`${environment.apiUrl}/project/challenge/entry/${entryId}`, {
+    return this.fetcher.fetch(`${environment.apiUrl}/project/challenge/entry/${entryId}`, {
       method: 'DELETE',
     });
   }

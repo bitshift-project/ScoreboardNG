@@ -24,6 +24,10 @@ export class NavigationBarComponent {
     });
   }
 
+  loginClicked(){
+    
+  }
+
   redirectScoreboard(){
     this.router.navigate([`/project/${this.selectedProject?.projectId}/${this.selectedTeam?.teamId}/scoreboard`]);
   }

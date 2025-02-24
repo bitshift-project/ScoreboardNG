@@ -23,6 +23,11 @@ export class ShareDataService {
   globalSelectedTeam = signal<Team | undefined>(undefined);
   globalCompletedEntries = signal<Entry[]>([]);
 
+  //secret stuff 🤐
+  apiPassword = signal('');
+  isLoggedIn = signal(false);
+
+  //other
   isSynced = signal(false);
 
   constructor() {
