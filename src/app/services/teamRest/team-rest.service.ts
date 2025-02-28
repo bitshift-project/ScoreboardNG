@@ -11,16 +11,20 @@ export class TeamRestService {
   constructor() {}
 
   createTeam(teamName: string, projectId: number): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project/team`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/team`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          projectId: projectId,
+          name: teamName,
+        }),
       },
-      body: JSON.stringify({
-        projectId: projectId,
-        name: teamName,
-      }),
-    });
+      true
+    );
   }
 
   async getAllTeamsForProject(projectId: number): Promise<Team[]> {
@@ -38,8 +42,12 @@ export class TeamRestService {
   }
 
   deleteTeam(teamId: number): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project/team/${teamId}`, {
-      method: 'DELETE',
-    });
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/team/${teamId}`,
+      {
+        method: 'DELETE',
+      },
+      true
+    );
   }
 }

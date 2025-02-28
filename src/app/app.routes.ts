@@ -34,13 +34,13 @@ export const routes: Routes = [
   {
     path: 'project/:projectId/:teamId/admin-tools/adding',
     component: AddingPageComponent,
-    title: 'team select',
+    title: 'Adding stuff',
     resolve: { _: projectStateResolver },
   },
   {
     path: 'project/:projectId/:teamId/admin-tools/deleting',
     component: DeletingPageComponent,
-    title: 'team select',
+    title: 'Deleting stuff',
     resolve: { _: projectStateResolver },
   },
 ];

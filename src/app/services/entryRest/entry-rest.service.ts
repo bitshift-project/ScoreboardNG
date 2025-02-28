@@ -16,18 +16,22 @@ export class EntryRestService {
     time: number | null,
     points: number
   ): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project/team`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/challenge/entry`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          challengeId: challengeId,
+          teamId: teamId,
+          time: time,
+          points: points,
+        }),
       },
-      body: JSON.stringify({
-        challengeId: challengeId,
-        teamId: teamId,
-        time: time,
-        points: points,
-      }),
-    });
+      true
+    );
   }
 
   async getLatestEntry(projectId: number): Promise<Entry> {
@@ -45,8 +49,12 @@ export class EntryRestService {
   }
 
   deleteEntry(entryId: number): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project/challenge/entry/${entryId}`, {
-      method: 'DELETE',
-    });
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/challenge/entry/${entryId}`,
+      {
+        method: 'DELETE',
+      },
+      true
+    );
   }
 }

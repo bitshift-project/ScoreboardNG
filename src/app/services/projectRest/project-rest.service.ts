@@ -16,20 +16,28 @@ export class ProjectRestService {
   }
 
   createProject(projectName: string): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: projectName,
+        }),
       },
-      body: JSON.stringify({
-        name: projectName,
-      }),
-    });
+      true
+    );
   }
 
-  deleteProject(projectId: number): Promise<Response>{
-    return this.fetcher.fetch(`${environment.apiUrl}/project/${projectId}`, {
-      method: 'DELETE',
-    });
+  deleteProject(projectId: number): Promise<Response> {
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/${projectId}`,
+      {
+        method: 'DELETE',
+      },
+      true
+    );
   }
 }

@@ -1,38 +1,154 @@
 <div class="adding-container">
   <mat-tab-group>
     <mat-tab label="Eintrag">
-      <form>
-        <div class="add-form">
-          <mat-form-field>
-            <mat-label>Challenge</mat-label>
-            <mat-select>
-              @for (challenge of challenges; track challenge.challengeId) {
-              <mat-option [value]="challenge">{{ challenge.name }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Team</mat-label>
-            <mat-select>
-              @for (team of teams; track team.teamId) {
-              <mat-option [value]="team.teamId">{{ team.name }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Points</mat-label>
-            <input matInput [value]="" />
-          </mat-form-field>
-
-          <button mat-flat-button>Hinzufügen</button>
-        </div>
+      <form class="add-form" [formGroup]="entry">
+        <mat-form-field>
+          <mat-label>Challenge</mat-label>
+          <mat-select formControlName="challenge">
+            @for (challenge of challenges; track challenge.challengeId) {
+            <mat-option [value]="challenge">{{ challenge.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Team</mat-label>
+          <mat-select formControlName="team">
+            @for (team of teams; track team.teamId) {
+            <mat-option [value]="team">{{ team.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Points</mat-label>
+          <input matInput formControlName="points" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>time</mat-label>
+          <input matInput formControlName="time" />
+        </mat-form-field>
+        <button
+          mat-flat-button
+          (click)="submitEntry()"
+          [disabled]="!isEntrySubmitEnabled"
+        >
+          Hinzufügen
+        </button>
       </form>
     </mat-tab>
 
-    <mat-tab label="Projekt"> Content 1 </mat-tab>
-    <mat-tab label="Team"> Content 2 </mat-tab>
-    <mat-tab label="Challenge"> Content 3 </mat-tab>
-    <mat-tab label="Tags"> Content 3 </mat-tab>
-    <mat-tab label="Tag -> Challenge"> Content 3 </mat-tab>
+    <mat-tab label="Projekt">
+      <div class="add-form">
+        <mat-form-field>
+          <mat-label>Projectname</mat-label>
+          <input matInput [(ngModel)]="projectName" />
+        </mat-form-field>
+        <button
+          mat-flat-button
+          (click)="submitProject()"
+          [disabled]="projectName.length === 0"
+        >
+          Hinzufügen
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Team">
+      <div class="add-form">
+        <mat-form-field>
+          <mat-label>Teamname</mat-label>
+          <input matInput [(ngModel)]="teamName" />
+        </mat-form-field>
+        <button
+          mat-flat-button
+          (click)="submitTeam()"
+          [disabled]="teamName.length === 0"
+        >
+          Hinzufügen
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Challenge">
+      <div class="add-form">
+        <mat-form-field>
+          <mat-label>Challengename</mat-label>
+          <input matInput [(ngModel)]="challengename" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Short Description</mat-label>
+          <input matInput [(ngModel)]="shortDescription" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Long Description</mat-label>
+          <textarea matInput [(ngModel)]="longDescription"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Points</mat-label>
+          <input matInput [(ngModel)]="points" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>ChallengeType</mat-label>
+          <mat-select [(ngModel)]="selChallengeType">
+            @for (cType of ChallengeTypes; track $index) {
+            <mat-option [value]="cType">{{ cType.toString() }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          (click)="submitChallenge()"
+          [disabled]="
+            challengename.length +
+              shortDescription.length +
+              longDescription.length ===
+            0
+          "
+        >
+          Hinzufügen
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Tags">
+      <div class="add-form">
+        <mat-form-field>
+          <mat-label>Tagname</mat-label>
+          <input matInput [(ngModel)]="tagName" />
+        </mat-form-field>
+        <button
+          mat-flat-button
+          (click)="submitTag()"
+          [disabled]="tagName.length === 0"
+        >
+          Hinzufügen
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Tag -> Challenge">
+      <div class="add-form">
+        <mat-form-field>
+          <mat-label>Challenge</mat-label>
+          <mat-select [(ngModel)]="tagChallengeId">
+            @for (challenge of challenges; track challenge.challengeId) {
+            <mat-option [value]="challenge.challengeId">{{
+              challenge.name
+            }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tag</mat-label>
+          <mat-select [(ngModel)]="tagId">
+            @for (tag of tags; track tag.tagId) {
+            <mat-option [value]="tag.tagId">{{ tag.content }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          (click)="submitTagToChallenge()"
+          [disabled]="!tagChallengeId || !tagId"
+        >
+          Hinzufügen
+        </button>
+      </div>
+    </mat-tab>
   </mat-tab-group>
 </div>

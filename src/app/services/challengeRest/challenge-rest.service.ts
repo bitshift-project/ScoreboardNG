@@ -21,20 +21,24 @@ export class ChallengeRestService {
     points: number,
     challengeType: ChallengeType
   ): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project/challenge`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/challenge`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          projectId: projectId,
+          name: name,
+          shortDescription: shortDescription,
+          longDescription: longDescription,
+          points: points,
+          challengeType: challengeType,
+        }),
       },
-      body: JSON.stringify({
-        projectId: projectId,
-        name: name,
-        shortDescription: shortDescription,
-        longDescription: longDescription,
-        points: points,
-        challengeType: challengeType,
-      }),
-    });
+      true
+    );
   }
 
   async getAllChallengesForProject(projectId: number): Promise<Challenge[]> {
@@ -52,9 +56,13 @@ export class ChallengeRestService {
   }
 
   deleteChallenge(challengeId: number): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project/challenge/${challengeId}`, {
-      method: 'DELETE',
-    });
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/challenge/${challengeId}`,
+      {
+        method: 'DELETE',
+      },
+      true
+    );
   }
 
   private async convertToChallenge(challengeData: any): Promise<Challenge> {

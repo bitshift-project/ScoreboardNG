@@ -27,21 +27,26 @@ export class TagsRestService {
   addTagToChallenge(challengeId: number, tagId: number): Promise<Response> {
     return this.fetcher.fetch(
       `${environment.apiUrl}/project/challenge/${challengeId}/tag/${tagId}`,
-      { method: 'POST' }
+      { method: 'POST' },
+      true
     );
   }
 
-  createChallenge(tagName: string, projectId: number): Promise<Response> {
-    return this.fetcher.fetch(`${environment.apiUrl}/project/tag`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+  createTag(tagName: string, projectId: number): Promise<Response> {
+    return this.fetcher.fetch(
+      `${environment.apiUrl}/project/tag`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: tagName,
+          projectId: projectId,
+        }),
       },
-      body: JSON.stringify({
-        content: tagName,
-        projectId: projectId,
-      }),
-    });
+      true
+    );
   }
 
   deleteTag(tagId: number): Promise<Response> {
