@@ -139,25 +139,19 @@ export class AddingPageComponent {
     const isTimeDisabled =
       value.challenge?.challengeType === ChallengeType.PointsOnly;
 
-    if (isTimeDisabled && this.entry.get('time')?.enabled) {
+    if (isTimeDisabled) {
       this.entry.get('time')?.disable({ emitEvent: false });
-    } else if (!isTimeDisabled && this.entry.get('time')?.disabled) {
+    } else if (!isTimeDisabled) {
       this.entry.get('time')?.enable({ emitEvent: false });
     }
     if (
-      !this.entry.get('challenge')?.value &&
-      !(
-        this.entry.get('team')?.disabled &&
-        this.entry.get('points')?.disabled &&
-        this.entry.get('time')?.disabled
-      )
+      !this.entry.get('challenge')?.value
     ) {
       this.entry.get('team')?.disable({ emitEvent: false });
       this.entry.get('points')?.disable({ emitEvent: false });
       this.entry.get('time')?.disable({ emitEvent: false });
     } else if (
-      this.entry.get('challenge')?.value &&
-      !(this.entry.get('team')?.enabled && this.entry.get('points')?.enabled)
+      this.entry.get('challenge')?.value
     ) {
       this.entry.get('team')?.enable({ emitEvent: false });
       this.entry.get('points')?.enable({ emitEvent: false });
