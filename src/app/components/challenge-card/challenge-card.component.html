@@ -1,8 +1,27 @@
-<mat-card class="challenge-card" appearance="outlined" [ngStyle]="{'border-color': isCompleted ? 'green' : '' }">
+<mat-card
+  class="challenge-card"
+  appearance="outlined"
+  [ngStyle]="{
+    'border-color': isCompleted
+      ? 'green'
+      : isPinned()
+      ? 'rgb(124, 124, 54)'
+      : ''
+  }"
+>
   <mat-card-header>
+    @if(isCompleted){
+    <mat-icon class="card-icon">check</mat-icon>
+    } @else if(isPinned()){
+    <mat-icon class="card-icon star-icon">star</mat-icon>
+    }
     <mat-card-title>{{ challenge().name }}</mat-card-title>
-    <mat-card-subtitle class="points"> Points: {{ challenge().points }}</mat-card-subtitle>
-    <mat-card-subtitle class="short-description">{{ challenge().shortDescription }}</mat-card-subtitle>
+    <mat-card-subtitle class="points">
+      Points: {{ challenge().points }}</mat-card-subtitle
+    >
+    <mat-card-subtitle class="short-description">{{
+      challenge().shortDescription
+    }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p class="long-description">
