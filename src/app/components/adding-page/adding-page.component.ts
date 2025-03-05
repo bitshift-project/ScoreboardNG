@@ -18,6 +18,7 @@ import { ProjectRestService } from '../../services/projectRest/project-rest.serv
 import { TeamRestService } from '../../services/teamRest/team-rest.service';
 import { ChallengeRestService } from '../../services/challengeRest/challenge-rest.service';
 import { TagsRestService } from '../../services/tagsRest/tags-rest.service';
+import { distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-adding-page',
@@ -110,31 +111,61 @@ export class AddingPageComponent {
   }
 
   //tag to challenge
-  tagChallengeId:  number | undefined;
-  tagId: number | undefined; 
-  submitTagToChallenge(){
+  tagChallengeId: number | undefined;
+  tagId: number | undefined;
+  submitTagToChallenge() {
     this.tagsRest.addTagToChallenge(this.tagChallengeId!, this.tagId!);
   }
 
-
   ngOnInit() {
-    this.entry.valueChanges.subscribe((value) => {
-      const isTimeDisabled =
-        value.challenge?.challengeType === ChallengeType.PointsOnly;
-
-      if (isTimeDisabled && this.entry.get('time')?.enabled) {
-        this.entry.get('time')?.disable();
-      } else if (!isTimeDisabled && this.entry.get('time')?.disabled) {
-        this.entry.get('time')?.enable();
-      }
-      this.isEntrySubmitEnabled =
-        value.challenge != undefined &&
-        value.team != undefined &&
-        value.points !== 0;
-    });
+    this.handleFormValueChange({});
+    this.entry.valueChanges
+      .pipe(distinctUntilChanged())
+      .subscribe((value) => this.handleFormValueChange(value));
 
     this.entry.get('challenge')!.valueChanges.subscribe((value) => {
       this.entry.get('points')?.setValue(value?.points ?? 0);
     });
+  }
+
+  handleFormValueChange(
+    value: Partial<{
+      challenge: Challenge | null | undefined;
+      team: Team | null | undefined;
+      points: number | null;
+      time: number | null;
+    }>
+  ) {
+    const isTimeDisabled =
+      value.challenge?.challengeType === ChallengeType.PointsOnly;
+
+    if (isTimeDisabled && this.entry.get('time')?.enabled) {
+      this.entry.get('time')?.disable({ emitEvent: false });
+    } else if (!isTimeDisabled && this.entry.get('time')?.disabled) {
+      this.entry.get('time')?.enable({ emitEvent: false });
+    }
+    if (
+      !this.entry.get('challenge')?.value &&
+      !(
+        this.entry.get('team')?.disabled &&
+        this.entry.get('points')?.disabled &&
+        this.entry.get('time')?.disabled
+      )
+    ) {
+      this.entry.get('team')?.disable({ emitEvent: false });
+      this.entry.get('points')?.disable({ emitEvent: false });
+      this.entry.get('time')?.disable({ emitEvent: false });
+    } else if (
+      this.entry.get('challenge')?.value &&
+      !(this.entry.get('team')?.enabled && this.entry.get('points')?.enabled)
+    ) {
+      this.entry.get('team')?.enable({ emitEvent: false });
+      this.entry.get('points')?.enable({ emitEvent: false });
+    }
+
+    this.isEntrySubmitEnabled =
+      value.challenge != undefined &&
+      value.team != undefined &&
+      value.points !== 0;
   }
 }

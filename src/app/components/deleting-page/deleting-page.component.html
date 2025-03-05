@@ -1,1 +1,150 @@
-<p>deleting-page works!</p>
+<div class="deleting-container">
+  <mat-tab-group (selectedTabChange)="tabHasChanged()">
+    <mat-tab label="Projekt">
+      <div class="delete-form">
+        <mat-form-field>
+          <mat-label>Project</mat-label>
+          <mat-select [(ngModel)]="project">
+            @for (project of projects; track project.projectId) {
+            <mat-option [value]="project">{{ project.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          class="delete-button"
+          (click)="deleteProject()"
+          [disabled]="!project"
+        >
+          {{ getButtonText() }}
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Team">
+      <div class="delete-form">
+        <mat-form-field>
+          <mat-label>Team</mat-label>
+          <mat-select [(ngModel)]="team">
+            @for (team of teams; track team.teamId) {
+            <mat-option [value]="team">{{ team.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          class="delete-button"
+          (click)="deleteTeam()"
+          [disabled]="!team"
+        >
+          {{ getButtonText() }}
+        </button>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Challenge">
+      <div class="delete-form">
+        <mat-form-field>
+          <mat-label>Challenge</mat-label>
+          <mat-select [(ngModel)]="challenge">
+            @for (challenge of challenges; track challenge.challengeId) {
+            <mat-option [value]="challenge">{{ challenge.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          class="delete-button"
+          (click)="deleteChallenge()"
+          [disabled]="!challenge"
+        >
+          {{ getButtonText() }}
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Tags">
+      <div class="delete-form">
+        <mat-form-field>
+          <mat-label>Tags</mat-label>
+          <mat-select [(ngModel)]="tag">
+            @for (tag of tags; track tag.tagId) {
+            <mat-option [value]="tag">{{ tag.content }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          class="delete-button"
+          (click)="deleteTag()"
+          [disabled]="!tag"
+        >
+          {{ getButtonText() }}
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Tags from Challenge">
+      <div class="delete-form">
+        <mat-form-field>
+          <mat-label>Challenge</mat-label>
+          <mat-select [(ngModel)]="challengeForTag" (valueChange)="challengeForTagHasChanged()">
+            @for (challenge of challenges; track challenge.challengeId) {
+            <mat-option [value]="challenge">{{ challenge.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Tag</mat-label>
+          <mat-select [(ngModel)]="tagFromChallenge" [disabled]="!challengeForTag">
+            @for (tag of challengeForTag?.tags; track $index) {
+            <mat-option [value]="tag">{{ tag.content }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          class="delete-button"
+          (click)="deleteTagChallenge()"
+          [disabled]="!tagFromChallenge || !challengeForTag"
+        >
+          {{ getButtonText() }}
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Entry">
+      <div class="delete-form">
+        <mat-form-field>
+          <mat-label>Team</mat-label>
+          <mat-select (valueChange)="teamHasChanged($event)">
+            @for (team of teams; track team.teamId) {
+            <mat-option [value]="team">{{ team.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Challenge</mat-label>
+          <mat-select (valueChange)="challengeHasChanged($event)" [disabled]="!teamForEntry">
+            @for (challenge of challengesForEntry; track challenge.challengeId)
+            {
+            <mat-option [value]="challenge">{{ challenge.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Entry</mat-label>
+          <mat-select [(ngModel)]="entry" [disabled]="!challengeForEntry || !teamForEntry">
+            @for (entry of entriesForChallenge; track entry.entryId) {
+            <mat-option [value]="entry">{{
+              "P: " + entry.points + ", Z: " + entry.time
+            }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button 
+        class="delete-button"
+         (click)="deleteEntry()"
+         [disabled]="!entry || !teamForEntry || !challengeForEntry">
+          {{ getButtonText() }}
+        </button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

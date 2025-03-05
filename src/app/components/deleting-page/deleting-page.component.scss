@@ -1,0 +1,28 @@
+.deleting-container {
+  margin-top: 120px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(44, 55, 56);
+  border: solid;
+  border-color: rgb(141, 23, 88);
+  border-radius: 7px;
+  padding: 10px;
+  min-height: 540px;
+}
+
+.delete-form {
+  padding: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete-button{
+    background-color: rgb(202, 35, 35);
+    color: white;
+}
+
+.delete-button:disabled{
+  background-color: rgb(165, 105, 105);
+}
