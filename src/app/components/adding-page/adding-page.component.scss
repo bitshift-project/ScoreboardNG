@@ -11,9 +11,15 @@
   min-height: 540px;
 }
 
-.add-form{
-    padding: 20px 0 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.add-form {
+  padding: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.select-project-info-text {
+  color: red;
+  margin-left: 36%;
+  margin-top: -35px;
 }

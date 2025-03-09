@@ -18,11 +18,17 @@
   align-items: center;
 }
 
-.delete-button{
-    background-color: rgb(202, 35, 35);
-    color: white;
+.delete-button {
+  background-color: rgb(202, 35, 35);
+  color: white;
 }
 
-.delete-button:disabled{
+.delete-button:disabled {
   background-color: rgb(165, 105, 105);
+}
+
+.select-project-info-text {
+  color: red;
+  margin-left: 37%;
+  margin-top: -35px;
 }
